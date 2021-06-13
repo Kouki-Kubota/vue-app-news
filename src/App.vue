@@ -1,8 +1,14 @@
 <template>
-  <div class="header">
-    <Header />
-    <Content />
+<div>
+  <div class="itemField">
+    <div class="header">
+      <Header />
+    </div>
+    <div class="contentField">
+      <Content />
+    </div>
   </div>
+</div>
 </template>
  
 <script>
@@ -16,5 +22,9 @@ export default {
   }
 }
 </script>
- 
-<style></style>
+<style>
+ .contentField {
+   max-width: 80vw;
+ }
+
+</style>

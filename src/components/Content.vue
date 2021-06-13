@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="n in 8" :key="n">
+  <div class="itemField">
+    <div v-for="n in 3" :key="n">
       <Item :article="n"/>
     </div>
   </div>
@@ -16,3 +16,10 @@ export default {
 }
 
 </script> 
+
+<style>
+.itemField {
+  display: flex;
+  max-width: 80vw;
+}
+</style>
