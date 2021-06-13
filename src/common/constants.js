@@ -5,23 +5,23 @@ export default {
         url: '#'
       },
       {
-        name: 'ABOUT',
+        name: 'SPORT',
         url: '#'
       },
       {
-        name: 'WORK',
+        name: 'BUSINESS',
         url: '#'
       },
       {
-        name: 'SERVICE',
+        name: 'TECH',
         url: '#'
       },
       {
-        name: 'BLOG',
+        name: 'FINANCE',
         url: '#'
       },
       {
-        name: 'ACCESS',
+        name: 'JAPAN',
         url: '#'
       }
     ]
