@@ -1,7 +1,7 @@
 <template>
   <div class="itemField">
-    <div v-for="n in 3" :key="n">
-      <Item :article="n"/>
+    <div>
+      <Item />
     </div>
   </div>
 </template>
