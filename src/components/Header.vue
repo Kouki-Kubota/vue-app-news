@@ -7,7 +7,7 @@
         dark
       >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-        <v-toolbar-title>Vue-News</v-toolbar-title>
+        <v-toolbar-title>News</v-toolbar-title>
       </v-app-bar>
       <v-navigation-drawer
         v-model="drawer"
