@@ -3,44 +3,42 @@
     <div v-for="(result, index ) in results" :key="index">
       <ul>
         <li>
-          <v-card
-            class="mx-auto card"
-            max-width="400"
-          >
-            <v-img
-              class="white--text align-end"
-              height="200px"
-              :src="result.urlToImage"
+          <a :href="`${result.url}`">
+            <v-card
+              class="mx-auto card"
+              max-width="400"
+              height="400"
+              :src="result.url"
+              color="rgb(255, 0, 0, 0)"
             >
-
-            </v-img>
-            <v-card-title>{{ result.title }}</v-card-title>
-            <v-card-subtitle class="pb-0">
-              {{ result.url }}
-            </v-card-subtitle>
-
-            <v-card-text class="text--primary">
-              <div>{{ result.description }}</div>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                color="orange"
-                text
+              <v-img
+                class="white--text align-end"
+                height="200px"
+                :src="result.urlToImage"
               >
-                Share
-              </v-btn>
 
-              <v-btn
-                color="orange"
-                text
-              >
-                Explore
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+              </v-img>
+              <v-card-title>{{ result.title }}</v-card-title>
+
+              <v-card-actions>
+                <v-btn
+                  color="orange"
+                  text
+                >
+                  Share
+                </v-btn>
+
+                <v-btn
+                  color="orange"
+                  text
+                >
+                  Explore
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </a>
         </li>
-        </ul>
+      </ul>
     </div>
   </div>
 </template>
@@ -74,12 +72,37 @@ export default {
 }
 </script>
 
-<style>
-.card {
-  margin: 80px 30px 30px 30px;
-}
-.itemField {
-  display: flex;
-  max-width: 80vw;
-}
+<style lang="sass">
+.card 
+  margin: 80px 30px 30px 30px
+
+.itemField
+  display: flex
+  max-width: 100vw
+
+ul
+  list-style: none
+
+a
+  text-decoration: none
+  color: #000000
+  &:link, &:visited, &:hover, &:active
+    color: #000000
+
+.transparent
+  background-color: blue!important
+
+.v-card
+  width: 100%
+  max-width: 600px
+  background-color: none
+  background-color: rgba(255, 255, 255, 0.1) /* 背景色 */
+  border: 1px solid rgba(255, 255, 255, 0.4) /* ボーダー */
+  border-right-color: rgba(255, 255, 255, 0.2)
+  border-bottom-color: rgba(255, 255, 255, 0.2)
+  border-radius: 15px
+  -webkit-backdrop-filter: blur(20px) /* ぼかしエフェクト */
+  backdrop-filter: blur(20px)
+  box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5) /* 薄い影 */
+
 </style>

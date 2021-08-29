@@ -17,9 +17,10 @@ export default {
 
 </script> 
 
-<style>
-.itemField {
-  display: flex;
-  max-width: 80vw;
-}
+<style lang="sass" scoped>
+.itemField
+  display: flex
+  width: 100vw
+  margin: 0 auto
+  flex-wrap: wrap
 </style>
