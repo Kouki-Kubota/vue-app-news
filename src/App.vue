@@ -5,6 +5,7 @@
       <Header />
     </div>
     <div class="contentField">
+      <Weather />
       <Content />
     </div>
   </div>
@@ -14,18 +15,20 @@
 <script>
 import Header from './components/Header'
 import Content from './components/Content'
+import Weather from './components/Weather'
 
 export default {
   components: { 
     Header,
-    Content
+    Content,
+    Weather
   }
 }
 </script>
-<style>
- .contentField {
-   max-width: 100vw;
-   background: linear-gradient(90deg, rgba(57, 203, 71, 0.42) 6.74%, rgba(60, 57, 205, 0.44) 50.28%, rgba(215, 63, 63, 0.41) 92.79%);
- }
+<style lang="sass" scoped>
+  .contentField 
+    width: 100vw
+    background-image: url("~@/assets/imgs/bgAulora.png")
+    background-repeat: repeat
 
 </style>
