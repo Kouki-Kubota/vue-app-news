@@ -29,6 +29,7 @@ export default {
   .contentField 
     width: 100vw
     background-image: url("~@/assets/imgs/bgAulora.png")
-    background-repeat: repeat
+    background-repeat: no-repeat
+    background-attachment: fixed
 
 </style>
