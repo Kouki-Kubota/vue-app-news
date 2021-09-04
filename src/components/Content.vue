@@ -1,17 +1,20 @@
 <template>
   <div class="itemField">
     <div>
+      <WeatherItem />
       <Item />
     </div>
   </div>
 </template>
 
 <script>
-import  Item  from "./Item.vue"
+import  Item  from "./atoms/Item"
+import  WeatherItem from "./atoms/WeatherItem"
 
 export default {
   components: {
-    Item
+    Item,
+    WeatherItem
   },
 }
 

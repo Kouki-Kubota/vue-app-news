@@ -5,7 +5,6 @@
       <Header />
     </div>
     <div class="contentField">
-      <Weather />
       <Content />
     </div>
   </div>
@@ -15,13 +14,11 @@
 <script>
 import Header from './components/Header'
 import Content from './components/Content'
-import Weather from './components/Weather'
 
 export default {
   components: { 
     Header,
     Content,
-    Weather
   }
 }
 </script>

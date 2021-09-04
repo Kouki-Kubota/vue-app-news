@@ -21,7 +21,7 @@ export default {
         url: '#'
       },
       {
-        name: 'JAPAN',
+        name: 'Enter Tainment',
         url: '#'
       }
     ]

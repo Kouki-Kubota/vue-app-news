@@ -51,19 +51,9 @@ export default {
       results:[]
     }
   },
-  /* mounted(){
-    //var i = 0;
-      axios.get('https://newsapi.org/v2/top-headlines?country=jp&category=sports&apiKey='+ key)
-      .then(response => {
-        Object.keys(response).forEach(key => {
-          this.results = response.data.[key];
-        })
-      })
-      console.log(this.results)
-  } */
   mounted(){
-    //var i = 0;
-      axios.get('https://newsapi.org/v2/top-headlines?country=jp&category=sports&apiKey='+ key)
+    let category = 'technology'
+      axios.get('https://newsapi.org/v2/top-headlines?country=jp&category=' + category +  '&apiKey='+ key)
       .then(response => {
         this.results = response.data.articles;
       })
@@ -96,7 +86,7 @@ a
   width: 100%
   max-width: 600px
   background-color: none
-  background-color: rgba(255, 255, 255, 0.1) /* 背景色 */
+  background: radial-gradient(100% 100% at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%)
   border: 1px solid rgba(255, 255, 255, 0.4) /* ボーダー */
   border-right-color: rgba(255, 255, 255, 0.2)
   border-bottom-color: rgba(255, 255, 255, 0.2)
