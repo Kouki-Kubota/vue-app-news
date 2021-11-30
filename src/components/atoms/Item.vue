@@ -44,6 +44,8 @@
 </template>
 <script>
 import axios from 'axios'
+//import constants from '@/common/constants'
+/* import store from '../../store/modules/news.js' */
 const key = '540c0a2d08264331b2101b7c7169ed92'
 export default {
   data () {
@@ -52,12 +54,15 @@ export default {
     }
   },
   mounted(){
-    let category = 'technology'
-      axios.get('https://newsapi.org/v2/top-headlines?country=jp&category=' + category +  '&apiKey='+ key)
-      .then(response => {
-        this.results = response.data.articles;
-      })
-      console.log(this.results);
+    /* const obj = constants.menuItems;
+    let activeCategory = obj.find(o=> o.active === true);
+    let category = activeCategory.value; */
+    let activeCategory = this.$store.state.news.activeCategory
+    axios.get('https://newsapi.org/v2/top-headlines?country=jp&category=' + activeCategory +  '&apiKey='+ key)
+    .then(response => {
+      this.results = response.data.articles;
+    })
+    console.log(this.results);
   }
 }
 </script>

@@ -1,12 +1,12 @@
 // initial state
 const state = () => ({
     newsData: {
-        "technology":[],
-        "entertainment":[],
-        "business":[],
-        "science":[],
+        "technology": "technology",
+        "entertainment": "entertainment",
+        "business": "business",
+        "science": "science",
     },
-    activeCategory: "business",
+    activeCategory: "sport",
     bookmarkData:[]
 })
 
