@@ -6,7 +6,7 @@
         app
         dark
       >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Vue-News</v-toolbar-title>
           <div class="textField">
             <v-text-field
@@ -25,12 +25,24 @@
           nav
           dense
         >
-          <v-list-item-group>
-            <v-list-item
-              v-for="(menuItem, index) in menuItems"
-              :key="index"
-            >
-              <v-list-item-title @click="changeCategory(menuItem)">{{ menuItem }}</v-list-item-title>
+          <v-list-item-group v-model="group">
+            <v-list-item>
+              <v-list-item-title @click="setResource('sport')">home</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title @click="setResource('sport')">sport</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title @click="setResource('business')">business</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title @click="setResource('technology')">tech</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title @click="setResource('science')">science</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title @click="setResource('entertainment')">entertainment</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
         </v-list>
@@ -40,24 +52,20 @@
 </template>
  
 <script>
-//import constants from '../common/constants'
-//import { mapMutations } from 'vuex'
-//import { mapMutations } from 'vuex'
+//import SideBar from './atoms/SideBar.vue'
+
 export default {
-  data () {
-    return {
-      drawer: false,
-      /* menuItems: constants.menuItems,
-      activeCategory: constants.menuItems.active */
-      menuItems: this.$store.state.news.newsData
+  data:() => ({
+    drawer: false,
+    group: null
+  }),
+  watch: {
+    group() {
+      this.drawer = false
     }
   },
-  methods: {
-    changeCategory(category) {
-      this.$store.commit('news/changeCategory', {
-        categoryName: category
-      })
-    }
+  props: {
+    setResource: Function
   }
 }
 </script>

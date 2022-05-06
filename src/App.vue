@@ -2,10 +2,10 @@
 <div>
   <div class="itemField">
     <div class="header">
-      <Header />
+      <Header :setResource = "setResource"/>
     </div>
     <div class="contentField">
-      <Content />
+      <Content :articles="articles"/>
     </div>
   </div>
 </div>
@@ -14,11 +14,32 @@
 <script>
 import Header from './components/Header'
 import Content from './components/Content'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: { 
     Header,
     Content,
+  },
+  computed: {
+    ...mapState({
+      activeCategory: state => state.news.activeCategory,
+    }),
+    ...mapGetters('news', {
+      articles: 'getArticlesByCategory'
+    })
+  },
+  //action呼び出し
+  created() {
+    this.$store.dispatch('news/getArticles')
+  },
+  methods: {
+    async setResource(category){
+      await this.$store.dispatch('news/updateCategory', category)
+      this.$store.dispatch('news/getArticles')
+      console.log(category)
+      console.log(this.$store.state.news.activeCategory)
+    }
   }
 }
 </script>

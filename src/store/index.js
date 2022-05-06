@@ -11,4 +11,9 @@ export default new Vuex.Store({
     news,
   },
   strict: debug,
+  mutations: {
+    changeCategory(state, category) {
+      state.activeCategory = category; 
+    }
+  }
 })

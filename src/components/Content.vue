@@ -1,8 +1,10 @@
 <template>
-  <div class="itemField">
-    <div>
-      <WeatherItem />
-      <Item />
+  <div class="items">
+    <WeatherItem />
+    <div class="newsField">
+      <div v-for="article in articles" :key="article.title">
+          <Item :article="article"/>    
+      </div>
     </div>
   </div>
 </template>
@@ -16,14 +18,23 @@ export default {
     Item,
     WeatherItem
   },
+  props: {
+    articles: Array
+  },
 }
 
 </script> 
 
 <style lang="sass" scoped>
-.itemField
-  display: flex
+.items
   width: 100vw
   margin: 0 auto
+  flex-wrap: wrap
+  display: flex
+
+.newsField
+  width: 100vw
+  margin: 0 auto
+  display: flex
   flex-wrap: wrap
 </style>

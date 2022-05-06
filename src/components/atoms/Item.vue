@@ -1,69 +1,47 @@
 <template>
   <div class="itemField">
-    <div v-for="(result, index ) in results" :key="index">
-      <ul>
-        <li>
-          <a :href="`${result.url}`">
-            <v-card
-              class="mx-auto card"
-              max-width="400"
-              height="400"
-              :src="result.url"
-              color="rgb(255, 0, 0, 0)"
-            >
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                :src="result.urlToImage"
-              >
+    <a :href="`${article.url}`">
+      <v-card
+        class="mx-auto card"
+        max-width="400"
+        height="400"
+        :src="article.url"
+        color="rgb(255, 0, 0, 0)"
+      >
+        <v-img
+          class="white--text align-end"
+          height="200px"
+          :src="article.urlToImage"
+        >
 
-              </v-img>
-              <v-card-title>{{ result.title }}</v-card-title>
+        </v-img>
+        <v-card-title>{{ article.title }}</v-card-title>
 
-              <v-card-actions>
-                <v-btn
-                  color="orange"
-                  text
-                >
-                  Share
-                </v-btn>
+        <v-card-actions>
+          <v-btn
+            color="orange"
+            text
+          >
+            Share
+          </v-btn>
 
-                <v-btn
-                  color="orange"
-                  text
-                >
-                  Explore
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </a>
-        </li>
-      </ul>
-    </div>
+          <v-btn
+            color="orange"
+            text
+          >
+            Explore
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </a>
   </div>
 </template>
 <script>
-import axios from 'axios'
-//import constants from '@/common/constants'
-/* import store from '../../store/modules/news.js' */
-const key = '540c0a2d08264331b2101b7c7169ed92'
 export default {
-  data () {
-    return {
-      results:[]
-    }
+  name: 'Item',
+  props: {
+    article: Object
   },
-  mounted(){
-    /* const obj = constants.menuItems;
-    let activeCategory = obj.find(o=> o.active === true);
-    let category = activeCategory.value; */
-    let activeCategory = this.$store.state.news.activeCategory
-    axios.get('https://newsapi.org/v2/top-headlines?country=jp&category=' + activeCategory +  '&apiKey='+ key)
-    .then(response => {
-      this.results = response.data.articles;
-    })
-    console.log(this.results);
-  }
 }
 </script>
 
@@ -73,10 +51,6 @@ export default {
 
 .itemField
   display: flex
-  max-width: 100vw
-
-ul
-  list-style: none
 
 a
   text-decoration: none
