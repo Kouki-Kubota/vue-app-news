@@ -6,7 +6,7 @@
         app
         dark
       >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Vue-News</v-toolbar-title>
           <div class="textField">
             <v-text-field
@@ -25,7 +25,7 @@
           nav
           dense
         >
-          <v-list-item-group>
+          <v-list-item-group v-model="group">
             <v-list-item>
               <v-list-item-title @click="setResource('sport')">home</v-list-item-title>
             </v-list-item>
@@ -55,9 +55,13 @@
 //import SideBar from './atoms/SideBar.vue'
 
 export default {
-  data () {
-    return {
-      drawer: false
+  data:() => ({
+    drawer: false,
+    group: null
+  }),
+  watch: {
+    group() {
+      this.drawer = false
     }
   },
   props: {

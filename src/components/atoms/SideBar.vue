@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-list-item-group>
+    <v-list-item-group v-model="group">
       <v-list-item>
         <v-list-item-title @click="setResource('sport')">home</v-list-item-title>
       </v-list-item>
@@ -32,11 +32,17 @@ export default {
     return {
       //menuItems: this.$store.state.news.newsData,
       select: false,
-      constants: constants.menuItems
+      constants: constants.menuItems,
+      drawer: false
     }
   },
   props: {
     setResource: Function
+  },
+  watch: {
+    group() {
+      this.drawer = false
+    }
   }
 }
 </script>

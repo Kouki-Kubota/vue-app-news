@@ -36,7 +36,6 @@ export default {
   methods: {
     async setResource(category){
       await this.$store.dispatch('news/updateCategory', category)
-
       this.$store.dispatch('news/getArticles')
       console.log(category)
       console.log(this.$store.state.news.activeCategory)
