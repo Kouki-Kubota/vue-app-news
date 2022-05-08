@@ -44,6 +44,9 @@
             <v-list-item>
               <v-list-item-title @click="setResource('entertainment')">entertainment</v-list-item-title>
             </v-list-item>
+            <v-list-item>
+              <v-list-item-title @click="setResource('bookmark')">bookmark</v-list-item-title>
+            </v-list-item>
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
@@ -52,7 +55,6 @@
 </template>
  
 <script>
-//import SideBar from './atoms/SideBar.vue'
 
 export default {
   data:() => ({

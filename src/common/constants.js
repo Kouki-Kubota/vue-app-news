@@ -23,6 +23,10 @@ export default {
     {
       name: 'Enter Tainment',
       resource: 'entertainment',
+    },
+    {
+      name: 'Bookmark',
+      resource: 'bookmark',
     }
   ]
 }

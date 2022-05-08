@@ -46,6 +46,10 @@ const actions = {
     if(state.activeCategory !== category){
       commit('setActiveCategory', category)
     }
+  },
+  //ブックマークデータの更新のaction
+  updateBookmark({commit}, value){
+    commit('updateBookmark', value)
   }
 }
 
@@ -60,6 +64,31 @@ const mutations = {
   //選択中のカテゴリを保存
   setActiveCategory(state, category){
     state.activeCategory = category
+  },
+  //ブックマークした記事の保存または削除
+  updateBookmark(state, id){
+    let category = state.activeCategory
+    //すでにブックマークされているか
+    const bookmark_index = state.bookmarkData.findIndex((item) => item.id == id)
+    if(category !== null && bookmark_index !== -1){
+      category = state.bookmarkData[bookmark_index].category
+    }
+
+    const article_index = state.newsData[category].findIndex((item) => item.id == id)
+    const bookmark = state.newsData[category][article_index].bookmark
+    if(article_index != null){
+      //newsDataのbookmarkをtrue/falseに変更
+      state.newsData[category][article_index].bookmark = !bookmark
+      //ブックマークされていなかったらbookmarkDataにデータを追加
+      if(bookmark_index === -1){
+        let copy_data = Object.assign(state.newsData[category][article_index])
+        copy_data.category = category
+        state.bookmarkData.push(copy_data)
+      }else{
+        //すでにある場合はbookmarkDataから削除
+        state.bookmarkData.splice(bookmark_index, 1)
+      }
+    }
   }
 }
 
@@ -67,7 +96,13 @@ const mutations = {
 const getters = {
   getArticlesByCategory: (state) => {
     const category = state.activeCategory
-    return state.newsData[category]
+    let data
+    if(category === "bookmark"){
+      data = state.bookmarkData
+    }else{
+      data = state.newsData[category]
+    }
+    return data;
   }
 }
 
