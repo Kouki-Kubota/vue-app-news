@@ -1,47 +1,67 @@
 <template>
   <div class="itemField">
-    <a :href="`${article.url}`">
-      <v-card
-        class="mx-auto card"
-        max-width="400"
-        height="400"
-        :src="article.url"
-        color="rgb(255, 0, 0, 0)"
+    <v-card
+      class="mx-auto card"
+      max-width="400"
+      height="400"
+      color="rgb(255, 0, 0, 0)"
+    >
+      <v-img
+        class="white--text align-end"
+        height="200px"
+        :src="article.urlToImage"
       >
-        <v-img
-          class="white--text align-end"
-          height="200px"
-          :src="article.urlToImage"
+
+      </v-img>
+      <v-card-title>{{ article.title }}</v-card-title>
+
+      <v-card-actions>
+        <v-icon
+          @click = "toggleBookmark(); onChangeBookmark(article.id)"
+          v-if="this.bookmark==false"
         >
+            mdi-bookmark-outline
+        </v-icon>
+        <v-icon
+          @click = "toggleBookmark(); onChangeBookmark(article.id)"
+          v-else
+        >
+            mdi-bookmark
+        </v-icon>
 
-        </v-img>
-        <v-card-title>{{ article.title }}</v-card-title>
-
-        <v-card-actions>
-          <v-btn
-            color="orange"
-            text
-          >
-            Share
-          </v-btn>
-
-          <v-btn
-            color="orange"
-            text
-          >
+        <v-btn
+          color="orange"
+          text
+          :source="article.url"
+        >
+          <a :href="`${article.url}`">
             Explore
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </a>
+          </a>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 <script>
 export default {
   name: 'Item',
+  data: function() {
+    return {
+      bookmark: false
+    }
+  },
   props: {
     article: Object
   },
+  methods: {
+    onChangeBookmark(id){
+      this.$store.dispatch('news/updateBookmark', id)
+    },
+    toggleBookmark(){
+      this.bookmark = !this.bookmark
+      console.log(this.bookmark)
+    }
+  }
 }
 </script>
 
