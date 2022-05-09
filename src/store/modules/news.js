@@ -4,7 +4,7 @@ import { changeCategory } from "../../api/getApi";
 // initial state
 const state = () => ({
     newsData: {
-      "sport": {},
+      "sport": [],
       "business": [],
       "technology": [],
       "science": [],
