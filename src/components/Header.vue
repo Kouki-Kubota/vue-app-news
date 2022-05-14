@@ -13,6 +13,8 @@
               hide-details
               append-icon="mdi-magnify"
               single-line
+              v-model="keyword"
+              label="ニュースを検索"
             ></v-text-field>
           </div>
       </v-app-bar>
@@ -27,7 +29,7 @@
         >
           <v-list-item-group v-model="group">
             <v-list-item>
-              <v-list-item-title @click="setResource('sport')">home</v-list-item-title>
+              <v-list-item-title @click="searchResource(keyword)">home</v-list-item-title>
             </v-list-item>
             <v-list-item>
               <v-list-item-title @click="setResource('sport')">sport</v-list-item-title>
@@ -59,7 +61,8 @@
 export default {
   data:() => ({
     drawer: false,
-    group: null
+    group: null,
+    keyword: ''
   }),
   watch: {
     group() {
@@ -67,7 +70,13 @@ export default {
     }
   },
   props: {
-    setResource: Function
+    setResource: Function,
+    searchResource: Function,
+  },
+  methods: {
+    confirmSerchContent() {
+      console.log(this.keyword)
+    }
   }
 }
 </script>

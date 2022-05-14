@@ -1,21 +1,14 @@
 
-import { changeCategory } from "../../api/getApi";
-import { searchCategory } from "../../api/searchApi";
+import { searchCategory } from "../../api/searchApi.js";
 
 // initial state
 const state = () => ({
     newsData: {
-      "home": {},
-      "sport": {},
-      "business": [],
-      "technology": [],
-      "science": [],
-      "entertainment": [],
+      "": {},
     },
-    activeCategory: "home",
+    activeCategory: "science",
     bookmarkData:[]
 })
-
 const article_id_list = {
   business: 0,
   entertainment: 20,
@@ -28,27 +21,8 @@ const actions = {
   //activecategoryのニュースを取得
   async getArticles({commit, state}){
     const category = state.activeCategory
-    if(state.newsData[category].length){
-      return false
-    }else{
-      const new_articles = await changeCategory(category)
+      const new_articles = await searchCategory(category)
       const article_data = new_articles.map((article, index)=>{
-        const start_index = article_id_list[category]
-        article.id = index + start_index
-        article.bookmark = false
-        return article
-      })
-      console.log("article_data", article_data)
-      console.log("サイドバーです")
-      commit('setArticles', {data: article_data, category: category})
-      return new_articles
-    }
-  },
-  //検索のアクション
-  async searchArticles({commit, state}){
-    const category = state.activeCategory
-      const search_articles = await searchCategory(category)
-      const article_data = search_articles.map((article, index)=>{
         const start_index = article_id_list[category]
         article.id = index + start_index
         article.bookmark = false
@@ -57,7 +31,7 @@ const actions = {
       console.log("article_data", article_data)
       console.log("検索です")
       commit('setArticles', {data: article_data, category: category})
-      return search_articles
+      return new_articles
   },
   //カテゴリ変更のaction
   updateCategory({commit, state}, category){

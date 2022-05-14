@@ -2,7 +2,7 @@ export default {
   menuItems: [
     {
       name: 'HOME',
-      resource: 'home',
+      resource: 'sport',
     },
     {
       name: 'SPORT',
