@@ -2,7 +2,10 @@
 <div>
   <div class="itemField">
     <div class="header">
-      <Header :setResource = "setResource"/>
+      <Header
+        :setResource = "setResource" 
+        :searchResource = "searchResource"
+      />
     </div>
     <div class="contentField">
       <Content :articles="articles"/>
@@ -39,6 +42,12 @@ export default {
       this.$store.dispatch('news/getArticles')
       console.log(category)
       console.log(this.$store.state.news.activeCategory)
+    },
+    async searchResource(category) {
+      await this.$store.dispatch('news/updateCategory', category)
+      this.$store.dispatch('news/searchArticles')
+      console.log(`検索${category}`)
+      console.log(this.$store.state.search.activeCategory)
     }
   }
 }
