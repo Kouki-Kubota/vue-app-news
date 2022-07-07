@@ -47,7 +47,7 @@ export default {
       await this.$store.dispatch('news/updateCategory', category)
       this.$store.dispatch('news/searchArticles')
       console.log(`検索${category}`)
-      console.log(this.$store.state.search.activeCategory)
+      console.log(this.$store.state.news.activeCategory)
     }
   }
 }

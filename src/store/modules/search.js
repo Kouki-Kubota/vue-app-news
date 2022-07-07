@@ -6,7 +6,7 @@ const state = () => ({
     newsData: {
       "": {},
     },
-    activeCategory: "science",
+    activeCategory: "business",
     bookmarkData:[]
 })
 const article_id_list = {
